@@ -108,8 +108,8 @@ function Home() {
     if (!walletConnected) {
       web3ModalRef.current = new Web3Modal({
         network: 'rinkeby',
-        providerOptions: {},
-        cacheProvider: true
+        cacheProvider: true,
+        providerOptions: {}
         // disableInjectedProvider: false
       });
       connectWallet();
@@ -118,24 +118,77 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-slate-200">
-      <div className="w-4/5 m-auto flex justify-between items-center flex-col md:flex-row">
-        <div className="">
-          <h1 className="text-gray-800 font-bold text-3xl md:text-4xl font-roboto">
-            Welcome To Crypto Devs
-          </h1>
-          <p className="text-gray-400  my-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt cupiditate aut nemo nobis,
-            iure tempore qui illum ex? Consequatur sequi nesciunt in tenetur illo cupiditate
-            assumenda. Beatae maxime vitae deserunt. <br />
-            {numberOfWhitelisted} have already joined the Whitelist
-          </p>
-          {renderButton()}
+      <div className=" w-11/12 md:w-4/5 m-auto flex flex-col">
+        {/* Banner Section */}
+        <div className="flex justify-between items-center flex-col md:flex-row">
+          <div className="">
+            <h1 className="text-gray-800 font-bold text-3xl md:text-4xl font-roboto">
+              Welcome To Crypto Devs
+            </h1>
+            <p className="text-gray-400  my-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt cupiditate aut nemo
+              nobis, iure tempore qui illum ex? Consequatur sequi nesciunt in tenetur illo
+              cupiditate assumenda. Beatae maxime vitae deserunt. <br />
+              {numberOfWhitelisted} have already joined the Whitelist
+            </p>
+            {renderButton()}
+          </div>
+          <div className="">
+            <Image src="/crypto-devs.svg" height={1400} width={1400} />
+          </div>
         </div>
-        <div className="">
-          <Image src="/crypto-devs.svg" height={1400} width={1400} />
+
+        {/* Crypto Cards */}
+        <div className="flex flex-col md:flex-row justify-center items-center md:justify-between flex-wrap mb-10">
+          {[
+            {
+              imageUrl: 'https://www.learnweb3.io/coding.svg',
+              backgroundImage: 'linear-gradient(to bottom right, #f97316, #db2777)',
+              text: 'Build meaningful projects that you can show off and share!'
+            },
+            {
+              imageUrl: 'https://www.learnweb3.io/team.svg',
+              backgroundImage: 'linear-gradient(to bottom right, #9333ea, #22d3ee)',
+              text: 'Team up with other developers around the world with the same goal and grow together!'
+            },
+            {
+              imageUrl: 'https://www.learnweb3.io/winners.svg',
+              backgroundImage: 'linear-gradient(to bottom right, #bef264, #14b8a6)',
+              text: 'Take part in exclusive hackathons, test your skills and win prizes (and bragging rights ofc)!'
+            }
+          ].map((card, index) => (
+            <div
+              key={index}
+              className=" w-full md:w-80 h-80 rounded bg-white shadow py-4 px-6  mb-6 md:mb-0 flex flex-col justify-center items-center cursor-pointer"
+              style={{ backgroundImage: card.backgroundImage }}>
+              <Image src={card.imageUrl} height={200} width={200} />
+              <p className="text-center text-gray-50 mt-2 md:text-sm">{card.text}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Newsletter Section */}
+        <div
+          className="w-full h-64 bg-card-one mb-10 rounded-md
+        flex justify-center items-center flex-col
+        ">
+          <h2 className="text-gray-50  text-2xl ">Join Our Newsletter</h2>
+          <div className="flex flex-col md:flex-row mt-6 w-3/4 justify-center items-center">
+            <input
+              type="email"
+              name="email"
+              id=""
+              placeholder="Enter your email"
+              className="px-4 py-3 rounded md:flex-0.8 w-full "
+            />
+            <button className="mt-3 md:mt-0 md:ml-4  bg-gray-700 text-gray-50 px-4 py-3 rounded md:flex-0.2 w-full">
+              Register
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 export default Home;
+
