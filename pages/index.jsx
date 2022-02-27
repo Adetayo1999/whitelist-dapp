@@ -159,7 +159,7 @@ function Home() {
           ].map((card, index) => (
             <div
               key={index}
-              className=" w-full md:w-80 h-80 rounded bg-white shadow py-4 px-6  mb-6 md:mb-0 flex flex-col justify-center items-center cursor-pointer"
+              className=" w-full md:w-80 h-80  transition hover:-translate-y-1 rounded bg-white shadow py-4 px-6  mb-6 md:mb-0 flex flex-col justify-center items-center cursor-pointer"
               style={{ backgroundImage: card.backgroundImage }}>
               <Image src={card.imageUrl} height={200} width={200} />
               <p className="text-center text-gray-50 mt-2 md:text-sm">{card.text}</p>
@@ -191,4 +191,3 @@ function Home() {
   );
 }
 export default Home;
-
